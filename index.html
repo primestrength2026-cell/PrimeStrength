@@ -34,6 +34,7 @@ padding:40px;
 font-size:42px;
 color:gold;
 font-weight:bold;
+letter-spacing:3px;
 }
 
 .motivation{
@@ -154,40 +155,33 @@ WhatsApp Order
 
 <script>
 
-/* ================= PRODUCT CONTROL PANEL ================= */
-/* ⭐⭐⭐ YOU EDIT ONLY HERE ⭐⭐⭐ */
-
 const productsData = {
 
 Boxing:[
-{name:"Prime Boxing Gloves",price:"28$"},
-{name:"Boxing Pads",price:"25$"},
-{name:"Hand Wraps",price:"8$"},
-{name:"Mouth Guard",price:"6$"},
-{name:"Speed Rope",price:"12$"},
-{name:"Punching Bag",price:"70$"},
-{name:"Head Guard",price:"30$"},
-{name:"Boxing Shorts",price:"20$"},
-{name:"Training Gloves",price:"24$"},
-{name:"Reflex Ball",price:"10$"}
-],
 
-Fitness:[
-{name:"Resistance Bands",price:"15$"},
-{name:"Yoga Mat",price:"18$"},
-{name:"Dumbbells",price:"40$"},
-{name:"Jump Rope",price:"9$"},
-{name:"Push Up Board",price:"22$"},
-{name:"Gym Gloves",price:"14$"},
-{name:"Foam Roller",price:"17$"},
-{name:"Kettlebell",price:"45$"},
-{name:"Ab Wheel",price:"16$"},
-{name:"Shaker Bottle",price:"7$"}
+{name:"Boxing Product 1",price:"28$",image:"https://i.supaimg.com/2457e6ea-61a4-415b-9cd5-9de83ac0509b/3982d955-4400-4429-a10b-9d1683eea32f.jpg"},
+
+{name:"Boxing Product 2",price:"25$",image:"https://i.supaimg.com/2457e6ea-61a4-415b-9cd5-9de83ac0509b/5b316a9f-513b-4fa8-9297-10e6251185f9.png"},
+
+{name:"Boxing Product 3",price:"25$",image:"https://i.supaimg.com/2457e6ea-61a4-415b-9cd5-9de83ac0509b/923a2948-3667-46ec-be0d-de8a6f49235a.jpg"},
+
+{name:"Boxing Product 4",price:"25$",image:"https://i.supaimg.com/2457e6ea-61a4-415b-9cd5-9de83ac0509b/23db39a3-8e58-410d-b30b-2fb0bc310b39.jpg"},
+
+{name:"Boxing Product 5",price:"25$",image:"https://i.supaimg.com/2457e6ea-61a4-415b-9cd5-9de83ac0509b/3336d7ea-74c9-4733-88a1-76c2ad9909b4.jpg"},
+
+{name:"Boxing Product 6",price:"25$",image:"https://i.supaimg.com/2457e6ea-61a4-415b-9cd5-9de83ac0509b/c102aff8-89d4-47b1-9a43-ccd77c1135f3.jpg"},
+
+{name:"Boxing Product 7",price:"25$",image:"https://i.supaimg.com/2457e6ea-61a4-415b-9cd5-9de83ac0509b/7d44520d-8fc8-4594-94b3-07fa0fe1e95a.jpg"},
+
+{name:"Boxing Product 8",price:"25$",image:"https://i.supaimg.com/2457e6ea-61a4-415b-9cd5-9de83ac0509b/99a4c30b-4ce1-4ed8-ac50-4202c377b730.jpg"},
+
+{name:"Boxing Product 9",price:"25$",image:"https://i.supaimg.com/2457e6ea-61a4-415b-9cd5-9de83ac0509b/3b529be9-8c10-44ad-8ab6-b0d65be3ade3.jpg"},
+
+{name:"Boxing Product 10",price:"25$",image:"https://i.supaimg.com/2457e6ea-61a4-415b-9cd5-9de83ac0509b/f72628ca-6668-4697-a516-8df017cb8ddf.jpg"}
+
 ]
 
 };
-
-/* ========================================================= */
 
 const shop=document.getElementById("shop");
 
@@ -198,12 +192,12 @@ div.className="sport";
 
 let html=`<h2>${sport}</h2><div class="products">`;
 
-productsData[sport].forEach((product,index)=>{
+productsData[sport].forEach(product=>{
 
 html+=`
 <div class="product">
 
-<img src="images/${sport}${index+1}.jpg">
+<img src="${product.image}">
 
 <h4>${product.name}</h4>
 
@@ -216,6 +210,7 @@ Order
 
 </div>
 `;
+
 });
 
 html+=`</div>`;
