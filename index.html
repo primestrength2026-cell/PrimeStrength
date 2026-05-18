@@ -488,17 +488,25 @@ const HEADERS = {
   'Content-Type': 'application/json',
   'X-Master-Key': JSONBIN_API_KEY,
   'X-Bin-Versioning': 'false'
-};
-
+}
 async function loadProducts() {
-  const res = await fetch(API, {
-    method: "GET",
-    headers: HEADERS,
-    cache: "no-store"
-  });
+  try {
+    const res = await fetch(API, {
+      method: "GET",
+      headers: HEADERS,
+      cache: "no-store"
+    });
 
-  const data = await res.json();
-  return data;
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.error("Load error:", e);
+
+    // IMPORTANT fallback so nothing disappears
+    return DEFAULT_PRODUCTS;
+  }
+}
+  
 }
 
 async function saveProducts(products) {
