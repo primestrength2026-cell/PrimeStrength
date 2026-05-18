@@ -491,9 +491,14 @@ const HEADERS = {
 };
 
 async function loadProducts() {
-  const r = await fetch(API, {headers: HEADERS});
-  const d = await r.json();
-  return d.record;
+  const res = await fetch(API, {
+    method: "GET",
+    headers: HEADERS,
+    cache: "no-store"
+  });
+
+  const data = await res.json();
+  return data;
 }
 
 async function saveProducts(products) {
@@ -524,7 +529,8 @@ async function init() {
       ALL = await loadProducts();
     }
   } catch(e) {
-    ALL = DEFAULT_PRODUCTS;
+  console.error("Failed to load products from JSONBin:", e);
+}
   }
   buildCategories();
   buildFooter();
