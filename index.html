@@ -429,8 +429,8 @@ tbody tr:hover{background:rgba(255,255,255,.02)}
 /* ══════════════════════════════════════════════════════
    ⚙ YOUR CONFIG — FILL THESE IN (see instructions below)
 ══════════════════════════════════════════════════════ */
-const JSONBIN_BIN_ID  = "6a0af732c0954111d83f0326";   // e.g. "6651abc123def456"
-const JSONBIN_API_KEY = "$2a$10$EzHScbKHQAJIBWxjDzM5KeUN2pnQ/GNooq6EdBRv2cJY1XhQS/fpu";  // e.g. "$2a$10$abcdef..."
+const JSONBIN_BIN_ID  = "YOUR_BIN_ID";   // e.g. "6651abc123def456"
+const JSONBIN_API_KEY = "YOUR_API_KEY";  // e.g. "$2a$10$abcdef..."
 /* ══════════════════════════════════════════════════════
    HOW TO GET THESE (free, 2 minutes):
    1. Go to jsonbin.io → Sign up free
@@ -488,25 +488,12 @@ const HEADERS = {
   'Content-Type': 'application/json',
   'X-Master-Key': JSONBIN_API_KEY,
   'X-Bin-Versioning': 'false'
-}
+};
+
 async function loadProducts() {
-  try {
-    const res = await fetch(API, {
-      method: "GET",
-      headers: HEADERS,
-      cache: "no-store"
-    });
-
-    const data = await res.json();
-    return data;
-  } catch (e) {
-    console.error("Load error:", e);
-
-    // IMPORTANT fallback so nothing disappears
-    return DEFAULT_PRODUCTS;
-  }
-}
-  
+  const r = await fetch(API, {headers: HEADERS});
+  const d = await r.json();
+  return d.record;
 }
 
 async function saveProducts(products) {
@@ -537,8 +524,7 @@ async function init() {
       ALL = await loadProducts();
     }
   } catch(e) {
-  console.error("Failed to load products from JSONBin:", e);
-}
+    ALL = DEFAULT_PRODUCTS;
   }
   buildCategories();
   buildFooter();
